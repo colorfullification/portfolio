@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Małgorzata Babska — Architekt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --cream:        #F0E6D3;
+    --cream-deep:   #E8DCC4;
+    --paper:        #F6EFE0;
+    --ink:          #1F1B16;
+    --ink-soft:     #4A4238;
+    --ink-mute:     #8A7F6E;
+    --hairline:     #C9B895;
+    --coral:        #C9573A;
+    --coral-deep:   #A8442C;
+
+    --pad-x:        clamp(24px, 6vw, 120px);
+    --gap-section:  clamp(80px, 12vh, 180px);
+    --hairline-w:   1px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection { background: var(--coral); color: var(--cream); }
+
+  /* --- Display + serif --- */
+  .serif {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    letter-spacing: -0.005em;
+  }
+  .serif-light { font-weight: 300; }
+
+  /* --- Labels (small caps style) --- */
+  .label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .label.coral { color: var(--coral); }
+
+  .mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ============== TOP BAR ============== */
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0;
+    padding: 22px var(--pad-x);
+    display: flex; align-items: center; justify-content: space-between;
+    background: linear-gradient(to bottom, var(--cream) 60%, rgba(240,230,211,0));
+    z-index: 50;
+    pointer-events: none;
+  }
+  .topbar > * { pointer-events: auto; }
+  .topbar .mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  .topbar nav {
+    display: flex; gap: 32px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .topbar nav a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color .2s ease;
+  }
+  .topbar nav a:hover { color: var(--coral); }
+
+  .topbar .locale {
+    font-size: 12px; color: var(--ink-mute);
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+
+  @media (max-width: 760px) {
+    .topbar nav { display: none; }
+  }
+
+  /* ============== SECTION HEAD ============== */
+  .section {
+    padding: 0 var(--pad-x);
+    margin-bottom: var(--gap-section);
+  }
+  .section-head {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    align-items: end;
+    gap: 32px;
+    padding-bottom: 24px;
+    border-bottom: var(--hairline-w) solid var(--hairline);
+    margin-bottom: 56px;
+  }
+  .section-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--coral);
+    font-style: italic;
+    line-height: 1;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+  .section-meta {
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    text-align: right;
+  }
+
+  @media (max-width: 700px) {
+    .section-head { grid-template-columns: 60px 1fr; gap: 16px; }
+    .section-meta { display: none; }
+    .section-num { font-size: 32px; }
+  }
+
+  /* ============== 00 — HERO ============== */
+  .hero {
+    padding: 180px var(--pad-x) 80px;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .hero-left {
+    display: flex; flex-direction: column;
+    gap: 40px;
+  }
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .hero-eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--coral);
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(72px, 11vw, 180px);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+  }
+  .hero-name em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--coral);
+  }
+  .hero-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3vw, 40px);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ink-soft);
+    line-height: 1.1;
+  }
+  .hero-tagline {
+    max-width: 480px;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .hero-stats {
+    display: flex; gap: 56px;
+    padding-top: 32px;
+    border-top: var(--hairline-w) solid var(--hairline);
+  }
+  .hero-stat .n {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+  .hero-stat .l {
+    margin-top: 6px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  .hero-right {
+    position: relative;
+    aspect-ratio: 4/5;
+    align-self: stretch;
+  }
+  .hero-portrait {
+    position: absolute;
+    inset: 0;
+    background: var(--cream-deep);
+    overflow: hidden;
+  }
+  .hero-portrait img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: saturate(0.85) contrast(1.02);
+  }
+  .hero-stamp {
+    position: absolute;
+    bottom: -28px; right: -28px;
+    width: 156px; height: 156px;
+    border-radius: 50%;
+    background: var(--coral);
+    color: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.1;
+    text-align: center;
+    box-shadow: 0 24px 48px rgba(31,27,22,0.12);
+  }
+  .hero-stamp::before {
+    content: '';
+    position: absolute; inset: 8px;
+    border: 1px solid rgba(240,230,211,0.4);
+    border-radius: 50%;
+  }
+  .hero-stamp .arrow {
+    margin-left: 6px;
+    font-size: 28px;
+    font-style: normal;
+  }
+
+  @media (max-width: 900px) {
+    .hero {
+      grid-template-columns: 1fr;
+      padding-top: 130px;
+      gap: 48px;
+    }
+    .hero-right { aspect-ratio: 4/4; max-width: 420px; }
+  }
+
+  /* ============== 01 — O MNIE ============== */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .about-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(28px, 2.6vw, 38px);
+    line-height: 1.25;
+    color: var(--ink);
+  }
+  .about-quote::first-letter {
+    color: var(--coral);
+  }
+  .about-body {
+    display: flex; flex-direction: column; gap: 28px;
+  }
+  .about-body p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 620px;
+  }
+  .about-credentials {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding-top: 28px;
+    margin-top: 16px;
+    border-top: var(--hairline-w) solid var(--hairline);
+  }
+  .cred .k {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 8px;
+  }
+  .cred .v {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-credentials { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ============== 02 — DOŚWIADCZENIE ============== */
+  .exp-list {
+    display: flex; flex-direction: column;
+  }
+  .exp {
+    display: grid;
+    grid-template-columns: 80px 1.6fr 1fr 200px;
+    gap: 40px;
+    align-items: start;
+    padding: 36px 0;
+    border-top: var(--hairline-w) solid var(--hairline);
+    transition: padding-left .35s ease;
+    cursor: default;
+  }
+  .exp:last-child { border-bottom: var(--hairline-w) solid var(--hairline); }
+  .exp:hover { padding-left: 16px; }
+  .exp:hover .exp-num { color: var(--coral); }
+
+  .exp-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 32px;
+    color: var(--ink-mute);
+    line-height: 1;
+    transition: color .25s ease;
+  }
+  .exp-co {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.005em;
+  }
+  .exp-co .role {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-top: 10px;
+  }
+  .exp-desc {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+  .exp-meta {
+    text-align: right;
+    display: flex; flex-direction: column;
+    gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+  }
+  .exp-meta .city {
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 11px;
+  }
+
+  @media (max-width: 900px) {
+    .exp {
+      grid-template-columns: 50px 1fr;
+      gap: 16px;
+    }
+    .exp-desc, .exp-meta {
+      grid-column: 2;
+    }
+    .exp-meta { text-align: left; flex-direction: row; gap: 16px; }
+  }
+
+  /* ============== 03 — PROJEKTY ============== */
+  .proj-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 56px 40px;
+  }
+  .proj {
+    display: flex; flex-direction: column;
+    gap: 16px;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+  .proj-img {
+    aspect-ratio: 4/5;
+    background: var(--cream-deep);
+    overflow: hidden;
+    position: relative;
+    transition: transform .5s ease;
+  }
+  .proj:hover .proj-img { transform: translateY(-6px); }
+  .proj-img image-slot {
+    width: 100%; height: 100%;
+    --slot-bg: var(--cream-deep);
+  }
+  .proj-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: saturate(0.9) contrast(1.02);
+    transition: transform .5s ease;
+  }
+  .proj:hover .proj-img img { transform: scale(1.03); }
+
+  /* ============== VIZ — WIZUALIZACJE ============== */
+  .viz-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .viz-item {
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    background: var(--cream-deep);
+    position: relative;
+  }
+  .viz-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: saturate(0.88) contrast(1.03);
+    transition: transform .6s ease;
+  }
+  .viz-item:hover img { transform: scale(1.04); }
+  .viz-label {
+    position: absolute;
+    bottom: 12px; left: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: rgba(240,230,211,0.75);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  @media (max-width: 700px) { .viz-grid { grid-template-columns: 1fr; } }
+  .proj-cat {
+    display: flex; align-items: baseline; gap: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--coral);
+  }
+  .proj-cat .num {
+    color: var(--ink-mute);
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.04em;
+  }
+  .proj-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.005em;
+  }
+  .proj-meta {
+    font-size: 13px;
+    color: var(--ink-mute);
+    letter-spacing: 0.02em;
+  }
+  .proj-meta span + span::before {
+    content: '·'; margin: 0 8px; color: var(--hairline);
+  }
+
+  @media (max-width: 1000px) { .proj-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  /* ============== MODAL PROJEKTU ============== */
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(31,27,22,0.88);
+    z-index: 200;
+    overflow-y: auto;
+    padding: 48px clamp(16px, 5vw, 80px);
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+
+  .modal-box {
+    background: var(--paper);
+    max-width: 860px; width: 100%;
+    padding: clamp(32px, 5vw, 64px);
+    position: relative;
+    margin: auto;
+  }
+  .modal-close {
+    position: absolute; top: 20px; right: 24px;
+    background: none; border: none;
+    font-size: 32px; line-height: 1;
+    cursor: pointer; color: var(--ink-mute);
+    transition: color .2s;
+  }
+  .modal-close:hover { color: var(--coral); }
+
+  .modal-cat {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--coral); margin-bottom: 12px;
+  }
+  .modal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 400; line-height: 1.1;
+    letter-spacing: -0.01em; margin-bottom: 8px;
+  }
+  .modal-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; color: var(--ink-mute);
+    letter-spacing: 0.04em; margin-bottom: 24px;
+  }
+  .modal-desc {
+    font-size: 15px; line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 640px; margin-top: 28px; margin-bottom: 0;
+    padding-top: 24px;
+    border-top: 1px solid var(--hairline);
+  }
+  .modal-main-img {
+    width: 100%; max-height: 520px;
+    object-fit: contain; display: block;
+    background: var(--cream-deep);
+    margin-bottom: 10px;
+    cursor: zoom-in;
+    transition: opacity .2s;
+  }
+  .modal-main-img:hover { opacity: 0.92; }
+  .modal-zoom-hint {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-mute);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+
+  /* ============== LIGHTBOX (fullscreen) ============== */
+  .lightbox {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(15, 12, 8, 0.97);
+    z-index: 300;
+    align-items: center; justify-content: center;
+    padding: 60px;
+  }
+  .lightbox.open { display: flex; }
+
+  .lightbox-img {
+    max-width: 100%; max-height: 100%;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  .lightbox-close {
+    position: absolute; top: 20px; right: 28px;
+    background: none; border: none;
+    font-size: 42px; line-height: 1;
+    cursor: pointer; color: var(--cream);
+    opacity: 0.7;
+    transition: opacity .2s;
+    z-index: 10;
+  }
+  .lightbox-close:hover { opacity: 1; color: var(--coral); }
+
+  .lightbox-nav {
+    position: absolute; top: 50%;
+    transform: translateY(-50%);
+    background: rgba(240,230,211,0.08);
+    border: 1px solid rgba(240,230,211,0.2);
+    color: var(--cream);
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .2s ease;
+    backdrop-filter: blur(4px);
+  }
+  .lightbox-nav:hover {
+    background: var(--coral);
+    border-color: var(--coral);
+    transform: translateY(-50%) scale(1.06);
+  }
+  .lightbox-prev { left: 24px; }
+  .lightbox-next { right: 24px; }
+
+  .lightbox-counter {
+    position: absolute; bottom: 28px; left: 50%;
+    transform: translateX(-50%);
+    color: var(--cream);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    opacity: 0.7;
+  }
+  .lightbox-title {
+    position: absolute; top: 28px; left: 32px;
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    opacity: 0.75;
+    max-width: calc(100% - 120px);
+  }
+
+  @media (max-width: 640px) {
+    .lightbox { padding: 24px; }
+    .lightbox-nav { width: 44px; height: 44px; font-size: 20px; }
+    .lightbox-prev { left: 8px; }
+    .lightbox-next { right: 8px; }
+    .lightbox-title { font-size: 14px; top: 16px; left: 16px; }
+    .lightbox-close { top: 12px; right: 16px; font-size: 36px; }
+  }
+  .modal-thumbs {
+    display: flex; gap: 8px;
+    overflow-x: auto; padding-bottom: 4px;
+  }
+  .modal-thumbs::-webkit-scrollbar { height: 4px; }
+  .modal-thumbs::-webkit-scrollbar-track { background: var(--cream-deep); }
+  .modal-thumbs::-webkit-scrollbar-thumb { background: var(--hairline); }
+  .modal-thumb {
+    width: 90px; height: 64px; flex-shrink: 0;
+    object-fit: contain; background: var(--cream-deep); cursor: pointer;
+    opacity: 0.55; border: 2px solid transparent;
+    transition: opacity .2s, border-color .2s;
+  }
+  .modal-thumb:hover { opacity: 0.85; }
+  .modal-thumb.active { opacity: 1; border-color: var(--coral); }
+  @media (max-width: 640px)  { .proj-grid { grid-template-columns: 1fr; gap: 48px; } }
+
+  /* ============== 04 — WYKSZTAŁCENIE ============== */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .edu {
+    padding: 36px 32px 36px 0;
+    border-top: var(--hairline-w) solid var(--hairline);
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .edu-period {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--coral);
+    letter-spacing: 0.04em;
+  }
+  .edu-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.005em;
+  }
+  .edu-place {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .edu-body {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .edu-body em {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  @media (max-width: 900px) { .edu-grid { grid-template-columns: 1fr; } }
+
+  /* ============== 05 — UMIEJĘTNOŚCI ============== */
+  .skills-wrap {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .skills-side {
+    position: sticky; top: 100px;
+    display: flex; flex-direction: column; gap: 32px;
+  }
+  .skills-side h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 38px;
+    line-height: 1.05;
+    color: var(--ink);
+  }
+  .skills-side p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    max-width: 360px;
+  }
+
+  .skill-block {
+    margin-bottom: 56px;
+  }
+  .skill-block:last-child { margin-bottom: 0; }
+  .skill-block-head {
+    display: flex; align-items: baseline; gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: var(--hairline-w) solid var(--hairline);
+  }
+  .skill-block-num {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--coral);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+  .skill-block-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    flex: 1;
+  }
+  .skill-block-count {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .pills {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .pill {
+    padding: 10px 18px;
+    border: var(--hairline-w) solid var(--hairline);
+    border-radius: 999px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    background: transparent;
+    transition: all .2s ease;
+    cursor: default;
+  }
+  .pill:hover {
+    border-color: var(--coral);
+    color: var(--coral);
+    background: rgba(201, 87, 58, 0.04);
+  }
+  .pill.solid {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--cream);
+  }
+  .pill.solid:hover { background: var(--coral); border-color: var(--coral); }
+  .pill .lvl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    margin-left: 10px;
+    color: var(--coral);
+  }
+
+  @media (max-width: 900px) {
+    .skills-wrap { grid-template-columns: 1fr; gap: 40px; }
+    .skills-side { position: static; }
+  }
+
+  /* ============== 06 — WARSZTATY ============== */
+  .work-list {
+    display: flex; flex-direction: column;
+  }
+  .work {
+    display: grid;
+    grid-template-columns: 80px 1.4fr 1fr 160px;
+    gap: 32px;
+    padding: 24px 0;
+    border-top: var(--hairline-w) solid var(--hairline);
+    align-items: baseline;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .work:last-child { border-bottom: var(--hairline-w) solid var(--hairline); }
+  .work-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-mute);
+  }
+  .work-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--ink);
+  }
+  .work-desc { color: var(--ink-soft); }
+  .work-meta {
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-mute);
+  }
+
+  @media (max-width: 900px) {
+    .work { grid-template-columns: 50px 1fr; }
+    .work-desc, .work-meta { grid-column: 2; text-align: left; }
+  }
+
+  /* ============== 07 — KONTAKT ============== */
+  .contact {
+    background: var(--ink);
+    color: var(--cream);
+    margin: 0 calc(-1 * var(--pad-x));
+    padding: 140px var(--pad-x) 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact .ribbon {
+    position: absolute;
+    top: 50px; left: 0; right: 0;
+    height: 1px;
+    background: rgba(240,230,211,0.18);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .contact-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(56px, 8vw, 130px);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+  .contact-headline em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--coral);
+  }
+  .contact-tagline {
+    margin-top: 32px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 22px;
+    color: rgba(240,230,211,0.7);
+    max-width: 420px;
+  }
+  .contact-right {
+    display: flex; flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+  }
+  .cta-circle {
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: var(--coral);
+    color: var(--cream);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-decoration: none;
+    font-family: 'Cormorant Garamond', serif;
+    position: relative;
+    transition: transform .35s ease;
+  }
+  .cta-circle:hover { transform: scale(1.04); }
+  .cta-circle::before {
+    content: '';
+    position: absolute; inset: 12px;
+    border: 1px solid rgba(240,230,211,0.4);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .cta-circle .l1 {
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .cta-circle .l2 {
+    font-size: 26px;
+    font-style: italic;
+    font-weight: 400;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .cta-circle .arrow {
+    display: inline-block;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--cream);
+    color: var(--coral);
+    font-size: 16px;
+    line-height: 28px;
+    text-align: center;
+    font-style: normal;
+    font-family: 'Inter', sans-serif;
+    transition: transform .3s ease;
+  }
+  .cta-circle:hover .arrow { transform: translate(2px, -2px); }
+
+  .contact-details {
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .contact-details a {
+    color: var(--cream);
+    text-decoration: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    border-bottom: 1px solid rgba(240,230,211,0.25);
+    padding-bottom: 4px;
+    transition: border-color .2s ease;
+  }
+  .contact-details a:hover { border-color: var(--coral); }
+
+  @media (max-width: 900px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 56px; }
+  }
+
+  /* ============== FOOTER ============== */
+  footer {
+    background: var(--ink);
+    color: rgba(240,230,211,0.5);
+    margin: 0 calc(-1 * var(--pad-x));
+    padding: 32px var(--pad-x);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(240,230,211,0.1);
+  }
+  footer .right { display: flex; gap: 24px; }
+
+  /* ============== utilities ============== */
+  .running-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+  }
+
+</style>
+</head>
+<body>
+
+  <!-- ========================================== TOP BAR -->
+  <header class="topbar">
+    <div class="mark">M·B</div>
+    <nav>
+      <a href="#about">O mnie</a>
+      <a href="#experience">Doświadczenie</a>
+      <a href="#projects">Projekty</a>
+      <a href="#education">Wykształcenie</a>
+      <a href="#viz">Wizualizacje</a>
+      <a href="#contact">Kontakt</a>
+    </nav>
+    <div class="locale">PL · EN · FR</div>
+  </header>
+
+  <!-- ========================================== HERO -->
+  <section class="hero" data-screen-label="00 Hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span class="dot"></span>
+        <span class="label">Portfolio · 2026 · Warszawa</span>
+      </div>
+
+      <h1 class="hero-name">
+        Małgorzata<br>
+        <em>Babska</em>
+      </h1>
+
+      <div class="hero-role">
+        architektka &amp; projektantka wnętrz
+      </div>
+
+      <p class="hero-tagline">
+        Projektuję budynki i wnętrza, gdzie klarowność procesu i harmonia zespołu
+        przenoszą się na jakość finalnego efektu. Doświadczenie z pracą w Polsce,
+        Niemczech i Belgii nauczyło mnie elastycznego podejścia do każdego projektu.
+      </p>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="n">10<sup style="font-size:.5em;color:var(--coral)">+</sup></div>
+          <div class="l">lat praktyki</div>
+        </div>
+        <div class="hero-stat">
+          <div class="n">5</div>
+          <div class="l">krajów</div>
+        </div>
+        <div class="hero-stat">
+          <div class="n">∞</div>
+          <div class="l">domów &amp; wnętrz</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-portrait">
+        <img src="assets/portretowe 1.jpg" alt="Małgorzata Babska — portret">
+      </div>
+      <a class="hero-stamp" href="#contact">
+        zatrudnij<br>mnie <span class="arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ========================================== 01 — O MNIE -->
+  <section class="section" id="about" data-screen-label="01 O mnie">
+    <div class="section-head">
+      <div class="section-num">01</div>
+      <h2 class="section-title">O mnie</h2>
+      <div class="section-meta">Profil · ENFP · Aktywista</div>
+    </div>
+
+    <div class="about-grid">
+      <p class="about-quote">
+        „Najbardziej ekscytującym elementem projektowania są dla mnie ludzie —
+        współpracownicy, jak i&nbsp;użytkownicy powstającej architektury."
+      </p>
+
+      <div class="about-body">
+        <p>
+          Pracowałam w bardzo różnych biurach — różne skale, kultury pracy, podejścia
+          do projektu. To nauczyło mnie elastyczności, którą rozumiem dosłownie.
+          Najlepiej pracuję w zespole, który się uzupełnia — gdzie każdy wnosi swoje
+          talenty. Napędza mnie to, że architektura może realnie zmienić stan życia.
+          Jestem wyczulona na emocje i na piękno i lubię dotykać tej głębi
+          w&nbsp;projektach.
+        </p>
+        <p>
+          Uwielbiam pracować na różnych skalach i ta rozpiętość napędza mnie
+          najbardziej — kiedy mam wpływ od bryły z zewnątrz, po wnętrza, materiały
+          i najmniejsze detale. Lubię, gdy
+          architektura jest spójna z&nbsp;wnętrzem, gdy jedno wynika z&nbsp;drugiego.
+          To, co mnie napędza w&nbsp;tej pracy, to właśnie ta ścieżka: od idei do konkretu
+          i&nbsp;czucie materiałów na każdym etapie.
+        </p>
+
+        <div class="about-credentials">
+          <div class="cred">
+            <div class="k">Wykształcenie</div>
+            <div class="v">mgr inż. arch.</div>
+          </div>
+          <div class="cred">
+            <div class="k">Bazuję w</div>
+            <div class="v">Warszawie</div>
+          </div>
+          <div class="cred">
+            <div class="k">Dostępność</div>
+            <div class="v">etat</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== 02 — DOŚWIADCZENIE -->
+  <section class="section" id="experience" data-screen-label="02 Doświadczenie">
+    <div class="section-head">
+      <div class="section-num">02</div>
+      <h2 class="section-title">Doświadczenie</h2>
+      <div class="section-meta">2016 — obecnie</div>
+    </div>
+
+    <div class="exp-list">
+
+      <div class="exp">
+        <div class="exp-num">01</div>
+        <div class="exp-co">
+          Agata Kowalska Architektura
+          <span class="role">Architektka wnętrz</span>
+        </div>
+        <div class="exp-desc">
+          Prowadzenie projektów wnętrz — od inwentaryzacji i koncepcji,
+          przez dobór elementów wyposażenia i materiałów, po tworzenie
+          kosztorysów i kontakt z klientem.
+        </div>
+        <div class="exp-meta">
+          <div>11.2025 — obecnie</div>
+          <div class="city">Warszawa</div>
+        </div>
+      </div>
+
+      <div class="exp">
+        <div class="exp-num">02</div>
+        <div class="exp-co">
+          Exterio
+          <span class="role">Architekt</span>
+        </div>
+        <div class="exp-desc">
+          Dwie koncepcje domu jednorodzinnego premium. Projekt centrum
+          logistycznego w Słupsku połączony z koncepcją osiedla domów
+          jednorodzinnych, usług towarzyszących oraz rozbudowy istniejących
+          budynków o garaże podziemne.
+        </div>
+        <div class="exp-meta">
+          <div>08.2025 — 10.2025</div>
+          <div class="city">Warszawa</div>
+        </div>
+      </div>
+
+      <div class="exp">
+        <div class="exp-num">03</div>
+        <div class="exp-co">
+          Pyłka Myszkowski
+          <span class="role">Architekt</span>
+        </div>
+        <div class="exp-desc">
+          Praca w zespole nad dokumentacją budowlaną, zarządzanie projektem
+          wieloetapowej zabudowy wielorodzinnej, projektowanie rozwiązań
+          dla mniejszych zespołów zabudowy wielolokalowej oraz prowadzenie
+          spraw urzędowych.
+        </div>
+        <div class="exp-meta">
+          <div>01.2025 — 07.2025</div>
+          <div class="city">Warszawa</div>
+        </div>
+      </div>
+
+      <div class="exp">
+        <div class="exp-num">04</div>
+        <div class="exp-co">
+          Modesi Homo Deco
+          <span class="role">Architekt</span>
+        </div>
+        <div class="exp-desc">
+          Rysunki techniczne luksusowych wnętrz, zestawienia, omawianie
+          rozwiązań z branżystami i zespołem architektów. Kontakt
+          z branżystami zagranicznymi oraz klientami. Nadzory budowlane.
+        </div>
+        <div class="exp-meta">
+          <div>09.2023 — 04.2024</div>
+          <div class="city">Warszawa</div>
+        </div>
+      </div>
+
+      <div class="exp">
+        <div class="exp-num">05</div>
+        <div class="exp-co">
+          Noto.Studio
+          <span class="role">Architekt</span>
+        </div>
+        <div class="exp-desc">
+          Pełny proces budowlany dla domów jednorodzinnych. Koncepcje
+          rozbudowy Pałacu w Pęcicach i kamienicy na Pięknej, projekty
+          małych obiektów usługowych. Kontakt z klientami i urzędami.
+        </div>
+        <div class="exp-meta">
+          <div>09.2021 — 08.2023</div>
+          <div class="city">Warszawa</div>
+        </div>
+      </div>
+
+      <div class="exp">
+        <div class="exp-num">06</div>
+        <div class="exp-co">
+          N. Kropidłowska
+          <span class="role">Architekt wnętrz</span>
+        </div>
+        <div class="exp-desc">
+          Projekty wnętrz usługowych, głównie gastronomicznych —
+          w tym kompleks rozrywkowy HI Piotrkowska o powierzchni
+          1000 m² wraz z koordynacją. Projekty wnętrz domów prywatnych.
+        </div>
+        <div class="exp-meta">
+          <div>09.2020 — 08.2021</div>
+          <div class="city">Łódź</div>
+        </div>
+      </div>
+
+      <div class="exp">
+        <div class="exp-num">07</div>
+        <div class="exp-co">
+          M Architektura
+          <span class="role">Architekt</span>
+        </div>
+        <div class="exp-desc">
+          Proces budowlany domów jednorodzinnych — od koncepcji,
+          przez rysunki, po nadzór branż. Projekty rozbudowy istniejących
+          budynków. Projektowanie wnętrz oraz prowadzenie klientów.
+        </div>
+        <div class="exp-meta">
+          <div>01 — 10.2020</div>
+          <div class="city">Poznań</div>
+        </div>
+      </div>
+
+      <div class="exp">
+        <div class="exp-num">08</div>
+        <div class="exp-co">
+          MSW Piotr Marcinkowski
+          <span class="role">Asystent</span>
+        </div>
+        <div class="exp-desc">
+          Rysunki wykonawcze i koordynacja przy projekcie zabudowy
+          wielorodzinnej. Tworzenie kosztorysów. Projekt systemowych
+          domów modułowych wraz z preprezentacją graficzną.
+        </div>
+        <div class="exp-meta">
+          <div>05 — 11.2019</div>
+          <div class="city">Łódź</div>
+        </div>
+      </div>
+
+      <div class="exp">
+        <div class="exp-num">09</div>
+        <div class="exp-co">
+          Reform
+          <span class="role">Asystent architekta</span>
+        </div>
+        <div class="exp-desc">
+          Praktyka zawodowa — pierwsze doświadczenie z tworzeniem
+          dokumentacji. Rysunki techniczne i wizualizacje domów
+          jednorodzinnych. Koncepcje wnętrz.
+        </div>
+        <div class="exp-meta">
+          <div>10.2017 — 02.2018</div>
+          <div class="city">Łódź</div>
+        </div>
+      </div>
+
+      <div class="exp">
+        <div class="exp-num">10</div>
+        <div class="exp-co">
+          Open Architekci
+          <span class="role">Asystent</span>
+        </div>
+        <div class="exp-desc">
+          Praktyka w większym biurze. Projektowanie wnętrz
+          i koordynacja branż centrum handlowego w Warszawie.
+          Koncepcja budynków publicznych w Angoli oraz domu
+          studenckiego w Łodzi.
+        </div>
+        <div class="exp-meta">
+          <div>06 — 10.2016</div>
+          <div class="city">Warszawa</div>
+        </div>
+      </div>
+
+      <div class="exp">
+        <div class="exp-num">11</div>
+        <div class="exp-co">
+          Zvi Hecker
+          <span class="role">Asystent architekta</span>
+        </div>
+        <div class="exp-desc">
+          Zagraniczna praktyka zawodowa przy rzemiośle architektonicznym.
+          Koncepcje konkursowe rozbudowy Reichstagu w Berlinie
+          oraz budynku uniwersyteckiego w Innsbrucku. Wystawa
+          w Muzeum Żydowskim w Berlinie.
+        </div>
+        <div class="exp-meta">
+          <div>01 — 05.2016</div>
+          <div class="city">Berlin</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== 03 — PROJEKTY -->
+  <section class="section" id="projects" data-screen-label="03 Projekty">
+    <div class="section-head">
+      <div class="section-num">03</div>
+      <h2 class="section-title">Wybrane projekty</h2>
+      <div class="section-meta">2022 — 2026 · Sześć realizacji</div>
+    </div>
+
+    <div class="proj-grid">
+
+      <div class="proj" data-proj-id="proj-1">
+        <div class="proj-img">
+          <img src="assets/1. parkhill/0.png" alt="Park Hill — rezydencja Mokotów">
+        </div>
+        <div class="proj-cat"><span class="num">01</span> Wnętrza · Rezydencja</div>
+        <h3 class="proj-title">Park Hill — rezydencja na Mokotowie</h3>
+        <div class="proj-meta"><span>Warszawa</span><span>~500 m²</span><span>2026 · w toku</span><span>Agata Kowalska Arch.</span></div>
+      </div>
+
+      <div class="proj" data-proj-id="proj-2">
+        <div class="proj-img">
+          <img src="assets/2. regnum/0.jpg" alt="Villa Regnum Turcja">
+        </div>
+        <div class="proj-cat"><span class="num">02</span> Wnętrza · Willa</div>
+        <h3 class="proj-title">Villa Regnum — rezydencja w Antalyi</h3>
+        <div class="proj-meta"><span>Antalia</span><span>1 000 m²</span><span>2024</span><span>Modesi Homo Deco</span></div>
+      </div>
+
+      <div class="proj" data-proj-id="proj-3">
+        <div class="proj-img">
+          <img src="assets/6. hi piotrkowska/0.jpg?v=2" alt="HI Piotrkowska — kompleks rozrywkowy">
+        </div>
+        <div class="proj-cat"><span class="num">03</span> Wnętrza · Klub &amp; Restauracja</div>
+        <h3 class="proj-title">HI Piotrkowska — kompleks klubowo-restauracyjny</h3>
+        <div class="proj-meta"><span>Łódź</span><span>1 000 m²</span><span>2020—21</span><span>N. Kropidłowska</span></div>
+      </div>
+
+      <div class="proj" data-proj-id="proj-4">
+        <div class="proj-img">
+          <img src="assets/3. stan house/0.jpg" alt="Stanhouse — dom jednorodzinny">
+        </div>
+        <div class="proj-cat"><span class="num">04</span> Architektura · Dom jednorodzinny</div>
+        <h3 class="proj-title">Stanhouse — koncepcja</h3>
+        <div class="proj-meta"><span>Warszawa</span><span>634 m²</span><span>2025</span><span>Exterio</span></div>
+      </div>
+
+      <div class="proj" data-proj-id="proj-5">
+        <div class="proj-img">
+          <img src="assets/4. kawalerka/0.png" alt="Kawalerka Instalatorów">
+        </div>
+        <div class="proj-cat"><span class="num">05</span> Wnętrza · Projekt własny</div>
+        <h3 class="proj-title">Instalatorów — kawalerka</h3>
+        <div class="proj-meta"><span>Warszawa</span><span>50 m²</span><span>2025</span><span>projekt własny</span></div>
+      </div>
+
+      <div class="proj" data-proj-id="proj-6">
+        <div class="proj-img">
+          <img src="assets/5. magdalenka/0.jpg" alt="Dom w Magdalence">
+        </div>
+        <div class="proj-cat"><span class="num">06</span> Architektura · Dom jednorodzinny</div>
+        <h3 class="proj-title">Magdalenka — dom na przedmieściach</h3>
+        <div class="proj-meta"><span>Magdalenka</span><span>~340 m²</span><span>2022</span><span>Noto.Studio</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== 04 — WYKSZTAŁCENIE -->
+  <section class="section" id="education" data-screen-label="04 Wykształcenie">
+    <div class="section-head">
+      <div class="section-num">04</div>
+      <h2 class="section-title">Wykształcenie</h2>
+      <div class="section-meta">2012 — 2019 · Politechnika Łódzka · Uniw. Antwerpski</div>
+    </div>
+
+    <div class="edu-grid">
+
+      <div class="edu">
+        <div class="edu-period">X 2016 — IV 2019</div>
+        <div class="edu-title">Studia magisterskie</div>
+        <div class="edu-place">Politechnika Łódzka · II°</div>
+        <div class="edu-body">
+          Architektura, II-stopień.<br>
+          Praca dyplomowa: <em>„Koherencja rezydencji miejskich w Belgii"</em>.<br>
+          Promotor: prof. dr hab. inż. arch. Marek Pabich.
+        </div>
+      </div>
+
+      <div class="edu">
+        <div class="edu-period">X 2017 — VI 2018</div>
+        <div class="edu-title">Roczna wymiana Erasmus+</div>
+        <div class="edu-place">Uniw. Antwerpski · Antwerpia</div>
+        <div class="edu-body">
+          Design Studio: Koen Van Bockstal — <em>„The Assembled City Castle"</em>.<br>
+          Erik Wieërs — <em>„Urbanity as context and concept!"</em>.
+        </div>
+      </div>
+
+      <div class="edu">
+        <div class="edu-period">X 2012 — IX 2016</div>
+        <div class="edu-title">Studia inżynierskie</div>
+        <div class="edu-place">Politechnika Łódzka · I°</div>
+        <div class="edu-body">
+          Architektura i Urbanistyka.<br>
+          Praca dyplomowa: <em>„Obiekt Idea Store w Londynie"</em>.<br>
+          Promotor: prof. dr hab. inż. arch. Marek Pabich.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== 05 — UMIEJĘTNOŚCI -->
+  <section class="section" id="skills" data-screen-label="05 Umiejętności">
+    <div class="section-head">
+      <div class="section-num">05</div>
+      <h2 class="section-title">Umiejętności</h2>
+      <div class="section-meta">Narzędzia · Języki · Cechy</div>
+    </div>
+
+    <div class="skills-wrap">
+      <aside class="skills-side">
+        <h3>Pracuję płynnie<br>w&nbsp;wielu narzędziach<br>i&nbsp;językach.</h3>
+        <p>
+          Dziesięć lat praktyki w&nbsp;różnych pracowniach nauczyło mnie
+          szybkiego przełączania się między oprogramowaniem
+          i&nbsp;dostosowywania workflow do skali projektu.
+        </p>
+      </aside>
+
+      <div>
+        <div class="skill-block">
+          <div class="skill-block-head">
+            <span class="skill-block-num">/01</span>
+            <span class="skill-block-title">Oprogramowanie</span>
+            <span class="skill-block-count">13 narzędzi</span>
+          </div>
+          <div class="pills">
+            <span class="pill solid">AutoCAD</span>
+            <span class="pill solid">ArchiCAD</span>
+            <span class="pill solid">3ds Max</span>
+            <span class="pill">Corona</span>
+            <span class="pill">SketchUp</span>
+            <span class="pill">Twinmotion</span>
+            <span class="pill">Enscape</span>
+            <span class="pill">Revit Architecture</span>
+            <span class="pill">Photoshop</span>
+            <span class="pill">Lightroom</span>
+            <span class="pill">Illustrator</span>
+            <span class="pill">InDesign</span>
+            <span class="pill">Microsoft Office</span>
+          </div>
+        </div>
+
+        <div class="skill-block">
+          <div class="skill-block-head">
+            <span class="skill-block-num">/02</span>
+            <span class="skill-block-title">Języki</span>
+            <span class="skill-block-count">PL · EN · FR</span>
+          </div>
+          <div class="pills">
+            <span class="pill">Polski <span class="lvl">native</span></span>
+            <span class="pill">Angielski <span class="lvl">C1</span></span>
+            <span class="pill">Francuski <span class="lvl">A2</span></span>
+            <span class="pill">Prawo jazdy <span class="lvl">kat. B</span></span>
+          </div>
+        </div>
+
+        <div class="skill-block">
+          <div class="skill-block-head">
+            <span class="skill-block-num">/03</span>
+            <span class="skill-block-title">Szkolenia</span>
+            <span class="skill-block-count">7 kursów</span>
+          </div>
+          <div class="pills">
+            <span class="pill">ARCHVIZ · 3DS + Corona</span>
+            <span class="pill">CGWisdom · AutoCAD zaawansowany</span>
+            <span class="pill">CGWisdom · SketchUp</span>
+            <span class="pill">Autodesk · Adobe Photoshop</span>
+            <span class="pill">Autodesk · Revit Architecture</span>
+            <span class="pill">Tworzenie asystentów AI</span>
+            <span class="pill">Agnieszka Pasieka-Adamek · Przedsiębiorczy Architekt</span>
+          </div>
+        </div>
+
+        <div class="skill-block">
+          <div class="skill-block-head">
+            <span class="skill-block-num">/04</span>
+            <span class="skill-block-title">Cechy &amp; podejście</span>
+            <span class="skill-block-count">ENFP · Aktywista</span>
+          </div>
+          <div class="pills">
+            <span class="pill">Kreatywność</span>
+            <span class="pill">Elastyczność i adaptacyjność</span>
+            <span class="pill">Orientacja na wartości</span>
+            <span class="pill">Empatia <span class="lvl">Gallup #3</span></span>
+            <span class="pill">Wizjoner <span class="lvl">Gallup #2</span></span>
+                        <span class="pill">Indywidualizacja <span class="lvl">Gallup #4</span></span>
+            <span class="pill">Osiąganie <span class="lvl">Gallup #5</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== 06 — WIZUALIZACJE -->
+  <section class="section" id="viz" data-screen-label="06 Wizualizacje">
+    <div class="section-head">
+      <div class="section-num">06</div>
+      <h2 class="section-title">Wizualizacje</h2>
+      <div class="section-meta">3ds Max · Corona · Twinmotion · Enscape</div>
+    </div>
+
+    <div class="viz-grid">
+
+      <div class="viz-item">
+        <img src="assets/render1.jpg" alt="Wizualizacja 01">
+        <span class="viz-label">3ds Max + Corona</span>
+      </div>
+
+      <div class="viz-item">
+        <img src="assets/render2.jpg" alt="Wizualizacja 02">
+        <span class="viz-label">3ds Max + Corona</span>
+      </div>
+
+      <div class="viz-item">
+        <img src="assets/render3.png" alt="Wizualizacja 03">
+        <span class="viz-label">Enscape</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== 07 — KONTAKT -->
+  <section class="contact" id="contact" data-screen-label="07 Kontakt">
+    <div class="ribbon"></div>
+    <div class="contact-grid">
+      <div>
+        <div class="label coral" style="margin-bottom:32px">07 — Kontakt</div>
+        <h2 class="contact-headline">
+          Porozmawiajmy<br>
+          o <em>projekcie</em>
+        </h2>
+        <p class="contact-tagline">
+          Otwarta na współpracę, wspólne projekty i doskonalenie procesu.
+          Bazuję w Warszawie, podróżuję chętnie.
+        </p>
+      </div>
+
+      <div class="contact-right">
+        <a class="cta-circle" href="mailto:babskagosia@gmail.com">
+          <div class="l1">Napisz</div>
+          <div class="l2">e-mail <span class="arrow">→</span></div>
+        </a>
+
+        <div class="contact-details">
+          <a href="mailto:babskagosia@gmail.com">babskagosia@gmail.com</a>
+          <a href="tel:+48519762393">+48 519 762 393</a>
+          <a href="#" style="opacity:.7">Warszawa, Polska</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>© 2026 — Małgorzata Babska</div>
+    <div class="right">
+      <span>Portfolio v.01</span>
+      <span>Last update · 05.2026</span>
+    </div>
+  </footer>
+
+  <!-- ========================================== MODAL PROJEKTU -->
+  <div id="proj-modal" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <button class="modal-close" aria-label="Zamknij">&times;</button>
+      <div class="modal-cat" id="modal-cat"></div>
+      <h2 class="modal-title" id="modal-title"></h2>
+      <div class="modal-meta" id="modal-meta"></div>
+      <img class="modal-main-img" id="modal-main-img" src="" alt="">
+      <div class="modal-zoom-hint">Kliknij zdjęcie, aby powiększyć</div>
+      <div class="modal-thumbs" id="modal-thumbs"></div>
+      <p class="modal-desc" id="modal-desc"></p>
+    </div>
+  </div>
+
+  <!-- ========================================== LIGHTBOX (fullscreen) -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true">
+    <div class="lightbox-title" id="lightbox-title"></div>
+    <button class="lightbox-close" id="lightbox-close" aria-label="Zamknij">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Poprzednie">&#8249;</button>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Następne">&#8250;</button>
+    <div class="lightbox-counter" id="lightbox-counter"></div>
+  </div>
+
+  <script>
+    const PROJECTS = {
+      'proj-1': {
+        title: 'Park Hill — rezydencja na Mokotowie',
+        cat: 'Wnętrza · Rezydencja',
+        meta: 'Warszawa · ~500 m² · 2026, w toku · Agata Kowalska Architektura',
+        desc: 'Projekt wnętrz prowadzony we współpracy z Agata Kowalska Architektura — willa na Mokotowie w stylu organic. Od koncepcji i inwentaryzacji, przez dobór materiałów i elementów wyposażenia, po kosztorys.',
+        images: ['assets/1. parkhill/0.png']
+      },
+      'proj-2': {
+        title: 'Villa Regnum — rezydencja w Antalyi',
+        cat: 'Wnętrza · Willa',
+        meta: 'Antalia · 1 000 m² · 2024 · Modesi Homo Deco',
+        desc: 'Willa premium w Turcji. Dokumentacja techniczna luksusowych wnętrz, koordynacja z branżystami zagranicznymi i klientem, nadzory budowlane. Projekt zrealizowany z Modesi Homo Deco.',
+        images: [
+          'assets/2. regnum/0.jpg',
+          'assets/2. regnum/1.jpg',
+          'assets/2. regnum/2.jpg',
+          'assets/2. regnum/3.jpg',
+          'assets/2. regnum/4.jpg',
+          'assets/2. regnum/5.jpg',
+          'assets/2. regnum/6.jpg'
+        ]
+      },
+      'proj-3': {
+        title: 'HI Piotrkowska — kompleks klubowo-restauracyjny',
+        cat: 'Wnętrza · Klub & Restauracja',
+        meta: 'Łódź · 1 000 m² · 2020—21 · N. Kropidłowska',
+        desc: 'Kompleks rozrywkowy i gastronomiczny na Piotrkowskiej w Łodzi. Projekt wnętrz od koncepcji do realizacji — przestrzenie restauracyjne, bary i strefy rozrywki. Projekt zrealizowany z pracownią N. Kropidłowskiej.',
+        images: [
+          'assets/6. hi piotrkowska/0.jpg?v=2',
+          'assets/6. hi piotrkowska/1.jpg',
+          'assets/6. hi piotrkowska/2.jpg',
+          'assets/6. hi piotrkowska/3.jpg',
+          'assets/6. hi piotrkowska/4.jpg',
+          'assets/6. hi piotrkowska/5.jpg'
+        ]
+      },
+      'proj-4': {
+        title: 'Stanhouse — koncepcja',
+        cat: 'Architektura · Dom jednorodzinny',
+        meta: 'Warszawa · 634 m² · 2025 · Exterio',
+        desc: 'Koncepcja domu jednorodzinnego premium. Opracowanie projektu architektonicznego od idei do dokumentacji — bryła, rzuty, detal. Projekt zrealizowany w ramach pracy w Exterio.',
+        images: [
+          'assets/3. stan house/0.jpg',
+          'assets/3. stan house/1.jpg',
+          'assets/3. stan house/2.jpg',
+          'assets/3. stan house/3.jpg',
+          'assets/3. stan house/4.png',
+          'assets/3. stan house/5.png',
+          'assets/3. stan house/6.png',
+          'assets/3. stan house/7.png',
+          'assets/3. stan house/8.png',
+          'assets/3. stan house/9.png'
+        ]
+      },
+      'proj-5': {
+        title: 'Instalatorów — kawalerka',
+        cat: 'Wnętrza · Projekt własny',
+        meta: 'Warszawa · 50 m² · 2025 · projekt własny',
+        desc: 'Projekt własny. Kawalerka 50 m² na ulicy Instalatorów w Warszawie. Pełny proces projektowy: koncepcja przestrzeni, dobór materiałów i wyposażenia, koordynacja wykonawcy.',
+        images: [
+          'assets/4. kawalerka/0.png'
+        ]
+      },
+      'proj-6': {
+        title: 'Magdalenka — dom na przedmieściach',
+        cat: 'Architektura · Dom jednorodzinny',
+        meta: 'Magdalenka · ~340 m² · 2022 · Noto.Studio',
+        desc: 'Dom jednorodzinny w Magdalence. Pełny proces budowlany — od koncepcji, przez projekt budowlany, po kontakt z urzędami i klientem. Projekt zrealizowany z Noto.Studio.',
+        images: [
+          'assets/5. magdalenka/0.jpg',
+          'assets/5. magdalenka/1.jpg',
+          'assets/5. magdalenka/2.jpg',
+          'assets/5. magdalenka/3.jpg',
+          'assets/5. magdalenka/4.jpg'
+        ]
+      }
+    };
+
+    const overlay    = document.getElementById('proj-modal');
+    const modalCat   = document.getElementById('modal-cat');
+    const modalTitle = document.getElementById('modal-title');
+    const modalMeta  = document.getElementById('modal-meta');
+    const modalDesc  = document.getElementById('modal-desc');
+    const mainImg    = document.getElementById('modal-main-img');
+    const thumbsWrap = document.getElementById('modal-thumbs');
+
+    const lightbox        = document.getElementById('lightbox');
+    const lightboxImg     = document.getElementById('lightbox-img');
+    const lightboxTitle   = document.getElementById('lightbox-title');
+    const lightboxCounter = document.getElementById('lightbox-counter');
+    const lightboxPrev    = document.getElementById('lightbox-prev');
+    const lightboxNext    = document.getElementById('lightbox-next');
+    const lightboxClose   = document.getElementById('lightbox-close');
+
+    let currentProject = null;
+    let currentIndex   = 0;
+
+    function openModal(id) {
+      const p = PROJECTS[id];
+      if (!p) return;
+      currentProject = p;
+      currentIndex = 0;
+
+      modalCat.textContent   = p.cat;
+      modalTitle.textContent = p.title;
+      modalMeta.textContent  = p.meta;
+      modalDesc.textContent  = p.desc;
+      thumbsWrap.innerHTML   = '';
+      p.images.forEach((src, i) => {
+        const t = document.createElement('img');
+        t.src = src;
+        t.className = 'modal-thumb' + (i === 0 ? ' active' : '');
+        t.addEventListener('click', () => setMainImg(i));
+        thumbsWrap.appendChild(t);
+      });
+      setMainImg(0);
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      overlay.querySelector('.modal-box').scrollTop = 0;
+    }
+
+    function setMainImg(index) {
+      if (!currentProject) return;
+      currentIndex = index;
+      mainImg.src = currentProject.images[index];
+      mainImg.alt = currentProject.title;
+      thumbsWrap.querySelectorAll('.modal-thumb').forEach((x, i) => {
+        x.classList.toggle('active', i === index);
+      });
+    }
+
+    function closeModal() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // === LIGHTBOX ===
+    function openLightbox() {
+      if (!currentProject) return;
+      updateLightbox();
+      lightbox.classList.add('open');
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+    }
+    function updateLightbox() {
+      if (!currentProject) return;
+      const total = currentProject.images.length;
+      lightboxImg.src      = currentProject.images[currentIndex];
+      lightboxImg.alt      = currentProject.title;
+      lightboxTitle.textContent   = currentProject.title;
+      lightboxCounter.textContent = (currentIndex + 1) + ' / ' + total;
+      const showNav = total > 1;
+      lightboxPrev.style.display = showNav ? 'flex' : 'none';
+      lightboxNext.style.display = showNav ? 'flex' : 'none';
+    }
+    function nextImage() {
+      if (!currentProject) return;
+      currentIndex = (currentIndex + 1) % currentProject.images.length;
+      setMainImg(currentIndex);
+      if (lightbox.classList.contains('open')) updateLightbox();
+    }
+    function prevImage() {
+      if (!currentProject) return;
+      const total = currentProject.images.length;
+      currentIndex = (currentIndex - 1 + total) % total;
+      setMainImg(currentIndex);
+      if (lightbox.classList.contains('open')) updateLightbox();
+    }
+
+    // === EVENTY ===
+    document.querySelectorAll('.proj[data-proj-id]').forEach(card => {
+      card.addEventListener('click', () => openModal(card.dataset.projId));
+    });
+
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+    overlay.querySelector('.modal-close').addEventListener('click', closeModal);
+
+    mainImg.addEventListener('click', openLightbox);
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', prevImage);
+    lightboxNext.addEventListener('click', nextImage);
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        if (lightbox.classList.contains('open')) closeLightbox();
+        else if (overlay.classList.contains('open')) closeModal();
+      }
+      if (lightbox.classList.contains('open') || overlay.classList.contains('open')) {
+        if (e.key === 'ArrowRight') nextImage();
+        if (e.key === 'ArrowLeft')  prevImage();
+      }
+    });
+  </script>
+
+</body>
+</html>
