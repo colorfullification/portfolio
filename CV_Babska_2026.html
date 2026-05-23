@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CV — Małgorzata Babska</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --cream:      #F0E6D3;
+    --cream-deep: #E8DCC4;
+    --paper:      #F6EFE0;
+    --ink:        #1F1B16;
+    --ink-soft:   #4A4238;
+    --ink-mute:   #8A7F6E;
+    --hairline:   #C9B895;
+    --coral:      #C9573A;
+    --coral-deep: #A8442C;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* ===== PAGE WRAPPER ===== */
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 64px 60px 80px;
+  }
+
+  /* ===== HEADER ===== */
+  .cv-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: end;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--hairline);
+    margin-bottom: 48px;
+  }
+
+  .cv-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 72px;
+    line-height: 0.88;
+    letter-spacing: -0.025em;
+  }
+
+  .cv-name em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--coral);
+  }
+
+  .cv-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ink-soft);
+    margin-top: 12px;
+    letter-spacing: -0.005em;
+  }
+
+  .cv-contact {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+    align-self: flex-end;
+    padding-bottom: 4px;
+  }
+
+  .cv-contact a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color .2s;
+  }
+
+  .cv-contact a:hover { color: var(--coral); }
+
+
+  /* ===== PROFILE ===== */
+  .cv-profile-wrap {
+    margin-bottom: 52px;
+    padding-bottom: 44px;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .section-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 14px;
+  }
+
+  .cv-profile-text {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    max-width: 780px;
+  }
+
+  /* ===== BODY LAYOUT ===== */
+  .cv-body {
+    display: grid;
+    grid-template-columns: 216px 1fr;
+    gap: 0 60px;
+    align-items: start;
+  }
+
+  /* ===== SIDEBAR ===== */
+  .cv-sidebar {
+    position: sticky;
+    top: 40px;
+  }
+
+  .sidebar-section {
+    margin-bottom: 40px;
+  }
+
+  .sidebar-section:last-child { margin-bottom: 0; }
+
+  .sidebar-body {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+
+  .lang-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(201,184,149,0.4);
+  }
+
+  .lang-row:last-child { border-bottom: none; }
+
+  .lang-name { font-size: 13px; color: var(--ink); }
+
+  .lang-level {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--coral);
+    letter-spacing: 0.04em;
+  }
+
+  /* PILLS */
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .pill {
+    padding: 5px 12px;
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    background: transparent;
+    line-height: 1.4;
+  }
+
+  .pill.solid {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--cream);
+  }
+
+  /* TRAITS */
+  .trait-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(201,184,149,0.4);
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+
+  .trait-row:last-child { border-bottom: none; }
+
+  .trait-lvl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--coral);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    margin-left: 8px;
+    flex-shrink: 0;
+  }
+
+  /* COURSES */
+  .course-item {
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(201,184,149,0.4);
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.45;
+  }
+
+  .course-item:last-child { border-bottom: none; }
+
+  /* ===== MAIN — EXPERIENCE ===== */
+  .cv-main .main-section {
+    margin-bottom: 48px;
+  }
+
+  .cv-main .main-section:last-child { margin-bottom: 0; }
+
+  .exp-item {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--hairline);
+    page-break-inside: avoid;
+  }
+
+  .exp-item:first-child { padding-top: 0; }
+  .exp-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .exp-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 3px;
+  }
+
+  .exp-company {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    flex: 1;
+  }
+
+  .exp-company.own {
+    color: var(--coral);
+    font-style: italic;
+  }
+
+  .exp-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-mute);
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+
+  .exp-sub {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 9px;
+  }
+
+  .exp-role {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--coral);
+  }
+
+  .exp-role.own { color: var(--coral-deep); }
+
+  .exp-city {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .exp-desc {
+    font-size: 13px;
+    line-height: 1.68;
+    color: var(--ink-soft);
+  }
+
+  /* ===== EDUCATION ===== */
+  .edu-item {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--hairline);
+    page-break-inside: avoid;
+  }
+
+  .edu-item:first-child { padding-top: 0; }
+  .edu-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .edu-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 3px;
+  }
+
+  .edu-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.005em;
+  }
+
+  .edu-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--coral);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .edu-place {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 7px;
+  }
+
+  .edu-body {
+    font-size: 13px;
+    line-height: 1.62;
+    color: var(--ink-soft);
+  }
+
+  .edu-body em {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  /* ===== WORKSHOPS ===== */
+  .workshop-item {
+    padding: 11px 0;
+    border-bottom: 1px solid rgba(201,184,149,0.5);
+    page-break-inside: avoid;
+  }
+
+  .workshop-item:first-child { padding-top: 0; }
+  .workshop-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .workshop-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 2px;
+  }
+
+  .workshop-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+
+  .workshop-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-mute);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .workshop-desc {
+    font-size: 12.5px;
+    color: var(--ink-mute);
+    line-height: 1.5;
+  }
+
+  /* ===== RODO ===== */
+  .rodo {
+    margin-top: 52px;
+    padding-top: 20px;
+    border-top: 1px solid var(--hairline);
+    font-size: 9.5px;
+    color: var(--ink-mute);
+    line-height: 1.55;
+    max-width: 780px;
+  }
+
+
+  /* ===== EARLY CAREER COMPACT ===== */
+  .early-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(201,184,149,0.4);
+    page-break-inside: avoid;
+  }
+
+  .early-item:first-child { padding-top: 0; }
+  .early-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .early-company {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--ink);
+    flex: 1;
+    min-width: 0;
+  }
+
+  .early-role {
+    font-size: 10.5px;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+  }
+
+  .early-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-mute);
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  /* ===== PRINT ===== */
+  @media print {
+    body {
+      background: white;
+      font-size: 11px;
+    }
+    .page {
+      padding: 16mm 18mm;
+      max-width: none;
+    }
+    .cv-sidebar { position: static; }
+    @page { size: A4; margin: 0; }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 720px) {
+    .cv-body { grid-template-columns: 1fr; gap: 40px; }
+    .cv-header { grid-template-columns: 1fr; gap: 20px; }
+    .cv-contact { text-align: left; }
+    .cv-name { font-size: 52px; }
+    .cv-sidebar { position: static; }
+    .page { padding: 40px 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- =============================== HEADER -->
+  <header class="cv-header">
+    <div>
+      <h1 class="cv-name">Małgorzata<br><em>Babska</em></h1>
+      <div class="cv-title">architektka &amp; projektantka wnętrz</div>
+    </div>
+    <div class="cv-contact">
+      <a href="mailto:babskagosia@gmail.com">babskagosia@gmail.com</a>
+      <a href="tel:+48519762393">+48 519 762 393</a>
+      <span>Warszawa, Polska</span>
+    </div>
+  </header>
+
+  <!-- =============================== PROFIL -->
+  <div class="cv-profile-wrap">
+    <div class="section-label">Profil zawodowy</div>
+    <p class="cv-profile-text">
+      Pracowałam w bardzo różnych biurach — różne skale, kultury pracy, podejścia do projektu.
+      To nauczyło mnie elastyczności, którą rozumiem dosłownie. Najlepiej pracuję w zespole, który
+      się uzupełnia — gdzie każdy wnosi swoje talenty.
+      Przeszłam przez pełny cykl projektowy: od koncepcji i dokumentacji, po kontakt z klientem
+      i nadzór budowlany. Widzę przez to projekt szerzej niż tylko swój etap i potrafię go
+      samodzielnie pociągnąć. Napędza mnie to, że architektura może realnie zmienić stan życia.
+      Jestem wyczulona na emocje i na piękno i lubię dotykać tej głębi w projektach.
+    </p>
+  </div>
+
+  <!-- =============================== BODY -->
+  <div class="cv-body">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="cv-sidebar">
+
+      <!-- Oprogramowanie -->
+      <div class="sidebar-section">
+        <div class="section-label">Oprogramowanie</div>
+        <div class="pills">
+          <span class="pill solid">AutoCAD</span>
+          <span class="pill solid">ArchiCAD</span>
+          <span class="pill solid">3ds Max</span>
+          <span class="pill">Corona</span>
+          <span class="pill solid">SketchUp</span>
+          <span class="pill">Twinmotion</span>
+          <span class="pill">Enscape</span>
+          <span class="pill">Photoshop</span>
+          <span class="pill">Illustrator</span>
+          <span class="pill">InDesign</span>
+          <span class="pill">MS Office</span>
+          <span class="pill">Claude AI</span>
+        </div>
+      </div>
+
+      <!-- Języki -->
+      <div class="sidebar-section">
+        <div class="section-label">Języki</div>
+        <div>
+          <div class="lang-row">
+            <span class="lang-name">Polski</span>
+            <span class="lang-level">native</span>
+          </div>
+          <div class="lang-row">
+            <span class="lang-name">Angielski</span>
+            <span class="lang-level">C1</span>
+          </div>
+          <div class="lang-row">
+            <span class="lang-name">Francuski</span>
+            <span class="lang-level">A2</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cechy -->
+      <div class="sidebar-section">
+        <div class="section-label">Cechy · ENFP Aktywista</div>
+        <div>
+          <div class="trait-row"><span>Kreatywność</span></div>
+          <div class="trait-row"><span>Elastyczność i adaptacyjność</span></div>
+          <div class="trait-row"><span>Orientacja na wartości</span></div>
+          <div class="trait-row">
+            <span>Empatia</span>
+            <span class="trait-lvl">Gallup #3</span>
+          </div>
+          <div class="trait-row">
+            <span>Wizjoner</span>
+            <span class="trait-lvl">Gallup #2</span>
+          </div>
+          <div class="trait-row">
+            <span>Indywidualizacja</span>
+            <span class="trait-lvl">Gallup #4</span>
+          </div>
+          <div class="trait-row">
+            <span>Osiąganie</span>
+            <span class="trait-lvl">Gallup #5</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prawo jazdy -->
+      <div class="sidebar-section">
+        <div class="section-label">Inne</div>
+        <div class="lang-row">
+          <span class="lang-name">Prawo jazdy</span>
+          <span class="lang-level">kat. B</span>
+        </div>
+      </div>
+
+      <!-- Szkolenia -->
+      <div class="sidebar-section">
+        <div class="section-label">Szkolenia</div>
+        <div>
+          <div class="course-item">ARCHVIZ · 3DS + Corona</div>
+          <div class="course-item">CGWisdom · AutoCAD zaawansowany</div>
+          <div class="course-item">CGWisdom · SketchUp</div>
+          <div class="course-item">Autodesk · Adobe Photoshop</div>
+          <div class="course-item">Tworzenie asystentów AI</div>
+          <div class="course-item">Agnieszka Pasieka-Adamek<br>· Przedsiębiorczy Architekt</div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ===== MAIN ===== -->
+    <main class="cv-main">
+
+      <!-- DOŚWIADCZENIE -->
+      <div class="main-section">
+        <div class="section-label">Doświadczenie zawodowe</div>
+
+        <!-- 01 -->
+        <div class="exp-item">
+          <div class="exp-top">
+            <div class="exp-company">Agata Kowalska Architektura</div>
+            <div class="exp-date">11.2025 — obecnie</div>
+          </div>
+          <div class="exp-sub">
+            <div class="exp-role">Architektka wnętrz</div>
+            <div class="exp-city">Warszawa</div>
+          </div>
+          <div class="exp-desc">
+            Prowadzenie projektów wnętrz — od inwentaryzacji i koncepcji, przez dobór elementów wyposażenia
+            i materiałów, po tworzenie kosztorysów i kontakt z klientem.
+          </div>
+        </div>
+
+        <!-- 02 -->
+        <div class="exp-item">
+          <div class="exp-top">
+            <div class="exp-company">Exterio</div>
+            <div class="exp-date">08 — 10.2025</div>
+          </div>
+          <div class="exp-sub">
+            <div class="exp-role">Architekt</div>
+            <div class="exp-city">Warszawa</div>
+          </div>
+          <div class="exp-desc">
+            Dwie koncepcje domu jednorodzinnego premium. Projekt centrum logistycznego w Słupsku
+            połączony z koncepcją osiedla domów jednorodzinnych, usług towarzyszących oraz rozbudowy
+            istniejących budynków o garaże podziemne.
+          </div>
+        </div>
+
+        <!-- 03 -->
+        <div class="exp-item">
+          <div class="exp-top">
+            <div class="exp-company">Pyłka Myszkowski</div>
+            <div class="exp-date">01 — 07.2025</div>
+          </div>
+          <div class="exp-sub">
+            <div class="exp-role">Architekt</div>
+            <div class="exp-city">Warszawa</div>
+          </div>
+          <div class="exp-desc">
+            Praca w zespole nad dokumentacją budowlaną, zarządzanie projektem wieloetapowej zabudowy
+            wielorodzinnej, projektowanie rozwiązań dla mniejszych zespołów zabudowy wielolokalowej
+            oraz prowadzenie spraw urzędowych.
+          </div>
+        </div>
+
+        <!-- 04 — PROJEKTY WŁASNE (luka między Modesi a Pyłką) -->
+        <div class="exp-item">
+          <div class="exp-top">
+            <div class="exp-company own">Projekty własne</div>
+            <div class="exp-date">01.2024 — 04.2025</div>
+          </div>
+          <div class="exp-sub">
+            <div class="exp-role own">Architekt / Architekt wnętrz</div>
+            <div class="exp-city">Warszawa</div>
+          </div>
+          <div class="exp-desc">
+            Samodzielne prowadzenie projektów wnętrz i architektonicznych — koncepcje, dokumentacja
+            techniczna, dobór materiałów i wyposażenia, koordynacja realizacji z wykonawcami.
+          </div>
+        </div>
+
+        <!-- 05 -->
+        <div class="exp-item">
+          <div class="exp-top">
+            <div class="exp-company">Modesi Homo Deco</div>
+            <div class="exp-date">09.2023 — 04.2024</div>
+          </div>
+          <div class="exp-sub">
+            <div class="exp-role">Architekt wnętrz</div>
+            <div class="exp-city">Warszawa</div>
+          </div>
+          <div class="exp-desc">
+            Rysunki techniczne luksusowych wnętrz, zestawienia, omawianie rozwiązań z branżystami
+            i zespołem architektów. Kontakt z branżystami zagranicznymi oraz klientami. Nadzory budowlane.
+          </div>
+        </div>
+
+
+        <!-- 07 -->
+        <div class="exp-item">
+          <div class="exp-top">
+            <div class="exp-company">Noto.Studio</div>
+            <div class="exp-date">09.2021 — 08.2023</div>
+          </div>
+          <div class="exp-sub">
+            <div class="exp-role">Architekt</div>
+            <div class="exp-city">Warszawa</div>
+          </div>
+          <div class="exp-desc">
+            Pełny proces budowlany dla domów jednorodzinnych. Koncepcje rozbudowy Pałacu w Pęcicach
+            i kamienicy na Pięknej, projekty małych obiektów usługowych. Kontakt z klientami i urzędami.
+          </div>
+        </div>
+
+        <!-- 08 -->
+        <div class="exp-item">
+          <div class="exp-top">
+            <div class="exp-company">N. Kropidłowska</div>
+            <div class="exp-date">09.2020 — 08.2021</div>
+          </div>
+          <div class="exp-sub">
+            <div class="exp-role">Architekt wnętrz</div>
+            <div class="exp-city">Łódź</div>
+          </div>
+          <div class="exp-desc">
+            Projekty wnętrz usługowych, głównie gastronomicznych — w tym kompleks rozrywkowy
+            HI Piotrkowska (1 000 m²) wraz z koordynacją. Projekty wnętrz domów prywatnych.
+          </div>
+        </div>
+
+        <!-- 09 -->
+        <div class="exp-item">
+          <div class="exp-top">
+            <div class="exp-company">M Architektura</div>
+            <div class="exp-date">01 — 10.2020</div>
+          </div>
+          <div class="exp-sub">
+            <div class="exp-role">Architekt</div>
+            <div class="exp-city">Poznań</div>
+          </div>
+          <div class="exp-desc">
+            Prowadzenie procesu budowlanego domów jednorodzinnych — od koncepcji, przez rysunki,
+            po nadzór branż. Projekty rozbudowy istniejących budynków. Projektowanie wnętrz
+            oraz prowadzenie klientów.
+          </div>
+        </div>
+
+
+      </div>
+      <!-- /DOŚWIADCZENIE -->
+
+
+      <!-- PRAKTYKI -->
+      <div class="main-section">
+        <div class="section-label">Praktyki &amp; asystentura</div>
+
+        <div class="early-item">
+          <div class="early-company">MSW Piotr Marcinkowski</div>
+          <div class="early-role">Asystent architekta</div>
+          <div class="early-meta">05–11.2019 · Łódź</div>
+        </div>
+        <div class="early-item">
+          <div class="early-company">Reform</div>
+          <div class="early-role">Asystent architekta</div>
+          <div class="early-meta">10.2017–02.2018 · Łódź</div>
+        </div>
+        <div class="early-item">
+          <div class="early-company">Open Architekci</div>
+          <div class="early-role">Asystent architekta</div>
+          <div class="early-meta">06–10.2016 · Warszawa</div>
+        </div>
+        <div class="early-item">
+          <div class="early-company">Zvi Hecker</div>
+          <div class="early-role">Asystent architekta</div>
+          <div class="early-meta">01–05.2016 · Berlin</div>
+        </div>
+
+      </div>
+      <!-- /PRAKTYKI -->
+
+      <!-- WYKSZTAŁCENIE -->
+      <div class="main-section">
+        <div class="section-label">Wykształcenie</div>
+
+        <div class="edu-item">
+          <div class="edu-top">
+            <div class="edu-title">Studia magisterskie</div>
+            <div class="edu-date">X 2016 — IV 2019</div>
+          </div>
+          <div class="edu-place">Politechnika Łódzka · Architektura II°</div>
+          <div class="edu-body">
+            Praca dyplomowa: <em>„Koherencja rezydencji miejskich w Belgii"</em><br>
+            Promotor: prof. dr hab. inż. arch. Marek Pabich
+          </div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-top">
+            <div class="edu-title">Erasmus+ · roczna wymiana</div>
+            <div class="edu-date">X 2017 — VI 2018</div>
+          </div>
+          <div class="edu-place">Uniwersytet Antwerpski · Antwerpia</div>
+          <div class="edu-body">
+            Design Studio: Koen Van Bockstal — <em>„The Assembled City Castle"</em><br>
+            Erik Wieërs — <em>„Urbanity as context and concept!"</em>
+          </div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-top">
+            <div class="edu-title">Studia inżynierskie</div>
+            <div class="edu-date">X 2012 — IX 2016</div>
+          </div>
+          <div class="edu-place">Politechnika Łódzka · Architektura i Urbanistyka I°</div>
+          <div class="edu-body">
+            Praca dyplomowa: <em>„Obiekt Idea Store w Londynie"</em><br>
+            Promotor: prof. dr hab. inż. arch. Marek Pabich
+          </div>
+        </div>
+
+      </div>
+      <!-- /WYKSZTAŁCENIE -->
+
+      <!-- WARSZTATY -->
+      <div class="main-section">
+        <div class="section-label">Warsztaty &amp; aktywność</div>
+
+
+        <div class="workshop-item">
+          <div class="workshop-top">
+            <div class="workshop-name">22 Architekci — konkurs</div>
+            <div class="workshop-date">IV–V 2023 · Warszawa</div>
+          </div>
+          <div class="workshop-desc">Projekt konkursowy Opery Królewskiej w Łazienkach w Warszawie</div>
+        </div>
+
+        <div class="workshop-item">
+          <div class="workshop-top">
+            <div class="workshop-name">Light Move Festiwal</div>
+            <div class="workshop-date">IX 2015 · Łódź</div>
+          </div>
+          <div class="workshop-desc">Warsztaty + wystawa — Grasshopper, budowa pawilonu parametrycznego</div>
+        </div>
+
+        <div class="workshop-item">
+          <div class="workshop-top">
+            <div class="workshop-name">Architektour</div>
+            <div class="workshop-date">IV 2015 · Wałbrzych</div>
+          </div>
+          <div class="workshop-desc">Warsztaty architektoniczne — koncepcja zagospodarowania obszarów miejskich. Współpraca z WWAA</div>
+        </div>
+
+        <div class="workshop-item">
+          <div class="workshop-top">
+            <div class="workshop-name">SKN 'Kąt' — Wiceprzewodnicząca Koła</div>
+            <div class="workshop-date">X 2014 — X 2016 · Łódź</div>
+          </div>
+          <div class="workshop-desc">Zarządzanie sprawami organizacyjnymi, tworzenie wydarzeń</div>
+        </div>
+
+        <div class="workshop-item">
+          <div class="workshop-top">
+            <div class="workshop-name">P 3.2</div>
+            <div class="workshop-date">IX 2014 · Łódź</div>
+          </div>
+          <div class="workshop-desc">Warsztaty + wystawa uczelniana — Grasshopper, pawilon parametryczny</div>
+        </div>
+
+        <div class="workshop-item">
+          <div class="workshop-top">
+            <div class="workshop-name">Hellastock</div>
+            <div class="workshop-date">IX 2014 · Ateny</div>
+          </div>
+          <div class="workshop-desc">Warsztaty + wystawa międzynarodowa — budowa wiszącego miasta dla uchodźców</div>
+        </div>
+
+      </div>
+      <!-- /WARSZTATY -->
+
+    </main>
+  </div>
+  <!-- /BODY -->
+
+  <!-- RODO -->
+  <div class="rodo">
+    Wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb rekrutacji (zgodnie z art. 6 ust. 1 lit. a
+    Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób
+    fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz
+    uchylenia dyrektywy 95/46/WE — ogólne rozporządzenie o ochronie danych).
+  </div>
+
+</div>
+</body>
+</html>

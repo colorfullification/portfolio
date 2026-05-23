@@ -399,6 +399,46 @@
     .exp-meta { text-align: left; flex-direction: row; gap: 16px; }
   }
 
+  /* ============== PRAKTYKI & ASYSTENTURA ============== */
+  .exp-divider {
+    padding: 48px 0 20px;
+    border-top: var(--hairline-w) solid var(--hairline);
+  }
+  .exp-divider .label { color: var(--coral); }
+  .exp-small {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 200px;
+    gap: 24px;
+    align-items: baseline;
+    padding: 18px 0;
+    border-top: var(--hairline-w) solid var(--hairline);
+  }
+  .exp-small:last-child { border-bottom: var(--hairline-w) solid var(--hairline); }
+  .exp-small-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--ink);
+  }
+  .exp-small-role {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .exp-small-meta {
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+  }
+  @media (max-width: 900px) {
+    .exp-small { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .exp-small-meta { text-align: left; grid-column: 1 / -1; }
+  }
+
   /* ============== 03 — PROJEKTY ============== */
   .proj-grid {
     display: grid;
@@ -1115,7 +1155,7 @@
         <div class="exp-num">02</div>
         <div class="exp-co">
           Exterio
-          <span class="role">Architekt · Współpraca</span>
+          <span class="role">Architekt</span>
         </div>
         <div class="exp-desc">
           Dwie koncepcje domu jednorodzinnego premium. Projekt centrum
@@ -1124,7 +1164,7 @@
           budynków o garaże podziemne.
         </div>
         <div class="exp-meta">
-          <div>08.2025 — 10.2025</div>
+          <div>08 — 10.2025</div>
           <div class="city">Warszawa</div>
         </div>
       </div>
@@ -1142,13 +1182,30 @@
           spraw urzędowych.
         </div>
         <div class="exp-meta">
-          <div>01.2025 — 07.2025</div>
+          <div>01 — 07.2025</div>
           <div class="city">Warszawa</div>
         </div>
       </div>
 
       <div class="exp">
         <div class="exp-num">04</div>
+        <div class="exp-co">
+          Projekty własne
+          <span class="role">Architekt / Architekt wnętrz</span>
+        </div>
+        <div class="exp-desc">
+          Samodzielne prowadzenie projektów wnętrz i architektonicznych —
+          koncepcje, dokumentacja techniczna, dobór materiałów i wyposażenia,
+          koordynacja realizacji z wykonawcami.
+        </div>
+        <div class="exp-meta">
+          <div>01.2024 — 04.2025</div>
+          <div class="city">Warszawa</div>
+        </div>
+      </div>
+
+      <div class="exp">
+        <div class="exp-num">05</div>
         <div class="exp-co">
           Modesi Homo Deco
           <span class="role">Architekt wnętrz</span>
@@ -1165,7 +1222,7 @@
       </div>
 
       <div class="exp">
-        <div class="exp-num">05</div>
+        <div class="exp-num">06</div>
         <div class="exp-co">
           22 Architekci
           <span class="role">Architekt · Konkurs</span>
@@ -1180,7 +1237,7 @@
       </div>
 
       <div class="exp">
-        <div class="exp-num">06</div>
+        <div class="exp-num">07</div>
         <div class="exp-co">
           Noto.Studio
           <span class="role">Architekt</span>
@@ -1197,7 +1254,7 @@
       </div>
 
       <div class="exp">
-        <div class="exp-num">07</div>
+        <div class="exp-num">08</div>
         <div class="exp-co">
           N. Kropidłowska
           <span class="role">Architekt wnętrz</span>
@@ -1214,7 +1271,7 @@
       </div>
 
       <div class="exp">
-        <div class="exp-num">08</div>
+        <div class="exp-num">09</div>
         <div class="exp-co">
           M Architektura
           <span class="role">Architekt</span>
@@ -1230,74 +1287,33 @@
         </div>
       </div>
 
-      <div class="exp">
-        <div class="exp-num">09</div>
-        <div class="exp-co">
-          MSW Piotr Marcinkowski
-          <span class="role">Asystent</span>
-        </div>
-        <div class="exp-desc">
-          Rysunki wykonawcze i koordynacja przy projekcie zabudowy
-          wielorodzinnej. Tworzenie kosztorysów. Projekt systemowych
-          domów modułowych wraz z preprezentacją graficzną.
-        </div>
-        <div class="exp-meta">
-          <div>05 — 11.2019</div>
-          <div class="city">Łódź</div>
-        </div>
+      <!-- PRAKTYKI & ASYSTENTURA -->
+      <div class="exp-divider">
+        <span class="label">Praktyki &amp; Asystentura</span>
       </div>
 
-      <div class="exp">
-        <div class="exp-num">10</div>
-        <div class="exp-co">
-          Reform
-          <span class="role">Asystent architekta</span>
-        </div>
-        <div class="exp-desc">
-          Praktyka zawodowa — pierwsze doświadczenie z tworzeniem
-          dokumentacji. Rysunki techniczne i wizualizacje domów
-          jednorodzinnych. Koncepcje wnętrz.
-        </div>
-        <div class="exp-meta">
-          <div>10.2017 — 02.2018</div>
-          <div class="city">Łódź</div>
-        </div>
+      <div class="exp-small">
+        <div class="exp-small-name">MSW Piotr Marcinkowski</div>
+        <div class="exp-small-role">Asystent architekta</div>
+        <div class="exp-small-meta">05 — 11.2019 · Łódź</div>
       </div>
 
-      <div class="exp">
-        <div class="exp-num">11</div>
-        <div class="exp-co">
-          Open Architekci
-          <span class="role">Asystent architekta</span>
-        </div>
-        <div class="exp-desc">
-          Praktyka w większym biurze. Projektowanie wnętrz
-          i koordynacja branż centrum handlowego w Warszawie.
-          Koncepcja budynków publicznych w Angoli oraz domu
-          studenckiego w Łodzi.
-        </div>
-        <div class="exp-meta">
-          <div>06 — 10.2016</div>
-          <div class="city">Warszawa</div>
-        </div>
+      <div class="exp-small">
+        <div class="exp-small-name">Reform</div>
+        <div class="exp-small-role">Asystent architekta</div>
+        <div class="exp-small-meta">10.2017 — 02.2018 · Łódź</div>
       </div>
 
-      <div class="exp">
-        <div class="exp-num">12</div>
-        <div class="exp-co">
-          Zvi Hecker
-          <span class="role">Asystent architekta</span>
-        </div>
-        <div class="exp-desc">
-          Zagraniczna praktyka zawodowa przy rzemiośle architektonicznym.
-          Koncepcje konkursowe rozbudowy Reichstagu w Berlinie
-          oraz budynku uniwersyteckiego w Innsbrucku. Wystawa
-          w Muzeum Żydowskim w Berlinie.
-        </div>
-        <div class="exp-meta">
-          <div>01 — 05.2016</div>
-          <div class="city">Berlin</div>
-        </div>
+      <div class="exp-small">
+        <div class="exp-small-name">Open Architekci</div>
+        <div class="exp-small-role">Asystent architekta</div>
+        <div class="exp-small-meta">06 — 10.2016 · Warszawa</div>
+      </div>
+
+      <div class="exp-small">
+        <div class="exp-small-name">Zvi Hecker</div>
+        <div class="exp-small-role">Asystent architekta</div>
+        <div class="exp-small-meta">01 — 05.2016 · Berlin</div>
       </div>
 
     </div>
